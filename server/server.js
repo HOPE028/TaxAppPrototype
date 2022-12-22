@@ -9,17 +9,20 @@ app.use(
   })
 )
 
+app.use(express.json())
+
 app.get('/services', (req, res) => {
   res.status(200).send({
     hello: 'HHHELLO',
   })
 })
 
-app.push('/requested-service', (req, res) => {
-  const { name } = req.body
+app.post('/requested-service', (req, res) => {
+  const { id, name } = req.body
 
   res.status(200).send({
-    success: name,
+    wierderId: id,
+    wierdName: name,
   })
 })
 
